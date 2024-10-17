@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizpro/utils/color_constants.dart';
 import 'package:quizpro/view/biologyQuiz/biology_quiz.dart';
 import 'package:quizpro/view/dummydb.dart';
+import 'package:quizpro/view/home_screen/home_screen.dart';
 
 class BiologyScreen extends StatefulWidget {
   const BiologyScreen({required this.rightAnswerCount, super.key});
@@ -105,6 +106,33 @@ class _BiologyScreenState extends State<BiologyScreen> {
                   child: Center(
                     child: Text(
                       "Restart",
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                    (route) => false,
+                  );
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      color: ColorConstants.TextColor,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.white)),
+                  child: Center(
+                    child: Text(
+                      "Return to Home",
                       style: TextStyle(color: Colors.black, fontSize: 20),
                     ),
                   ),

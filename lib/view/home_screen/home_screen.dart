@@ -75,6 +75,9 @@ class HomeScreen extends StatelessWidget {
               "Let's Play",
               style: TextStyle(color: ColorConstants.TextColor, fontSize: 24),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

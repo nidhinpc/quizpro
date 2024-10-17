@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizpro/utils/color_constants.dart';
 import 'package:quizpro/view/dummydb.dart';
+import 'package:quizpro/view/home_screen/home_screen.dart';
 import 'package:quizpro/view/sportsQuiz/sports_quiz.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -106,6 +107,33 @@ class _ResultScreenState extends State<ResultScreen> {
                   child: Center(
                     child: Text(
                       "Restart",
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(),
+                    ),
+                    (route) => false,
+                  );
+                },
+                child: Container(
+                  height: 50,
+                  decoration: BoxDecoration(
+                      color: ColorConstants.TextColor,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.white)),
+                  child: Center(
+                    child: Text(
+                      "Return to Home",
                       style: TextStyle(color: Colors.black, fontSize: 20),
                     ),
                   ),

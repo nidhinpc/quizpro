@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quizpro/utils/color_constants.dart';
-import 'package:quizpro/view/sportsQuiz/sports_quiz.dart';
 
 class CustomBox extends StatelessWidget {
   String section;
@@ -20,14 +19,20 @@ class CustomBox extends StatelessWidget {
         width: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: ColorConstants.TextColor,
+          color: ColorConstants.BoxColor,
         ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
-                child: Text(section),
+                child: Text(
+                  section,
+                  style: TextStyle(
+                    color: ColorConstants.StarColor,
+                    fontSize: 24,
+                  ),
+                ),
               )
             ],
           ),

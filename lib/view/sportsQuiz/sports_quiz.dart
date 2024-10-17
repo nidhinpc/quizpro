@@ -64,21 +64,19 @@ class _SportsQuizState extends State<SportsQuiz> {
                 child: Stack(
                   fit: StackFit.loose,
                   children: [
-                    SizedBox(
-                      child: Container(
-                        padding: EdgeInsets.all(8),
-                        margin: EdgeInsets.only(top: 20),
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: ColorConstants.TextColor, width: 1),
-                            borderRadius: BorderRadius.circular(20),
-                            color: ColorConstants.BoxColor),
-                        child: Center(
-                          child: Text(
-                            Dummydb.sportsQuestionList[questIndex]["question"],
-                            style: TextStyle(color: ColorConstants.TextColor),
-                          ),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      margin: EdgeInsets.only(top: 20),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: ColorConstants.TextColor, width: 1),
+                          borderRadius: BorderRadius.circular(20),
+                          color: ColorConstants.BoxColor),
+                      child: Center(
+                        child: Text(
+                          Dummydb.sportsQuestionList[questIndex]["question"],
+                          style: TextStyle(color: ColorConstants.TextColor),
                         ),
                       ),
                     ),
@@ -90,63 +88,48 @@ class _SportsQuizState extends State<SportsQuiz> {
                     Positioned(
                       top: 1,
                       right: 170,
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: CircleAvatar(
-                          backgroundColor: ColorConstants.SubTextColor,
-                          child: CircularCountDownTimer(
-                            duration: 30,
-                            initialDuration: 0,
-                            controller: _timecontroller,
-                            width: MediaQuery.of(context).size.width / 2,
-                            height: MediaQuery.of(context).size.height / 2,
-                            ringColor: Colors.grey[300]!,
-                            ringGradient: null,
-                            fillColor: Colors.purpleAccent[100]!,
-                            fillGradient: null,
-                            backgroundColor: Colors.purple[500],
-                            backgroundGradient: null,
-                            strokeWidth: 8.0,
-                            strokeCap: StrokeCap.round,
-                            textStyle: TextStyle(
-                                fontSize: 25.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                            textFormat: CountdownTextFormat.S,
-                            isReverse: false,
-                            isReverseAnimation: false,
-                            isTimerTextShown: true,
-                            autoStart: true,
-                            onComplete: () {
-                              selectedOption = null;
-                              if (currentQuest < lastQuest - 1) {
-                                currentQuest++;
-                                questIndex++;
-                                currentIndex++;
-                                _isAnswered = true;
+                      child: CircleAvatar(
+                        backgroundColor: ColorConstants.SubTextColor,
+                        child: CircularCountDownTimer(
+                          duration: 30,
+                          initialDuration: 0,
+                          controller: _timecontroller,
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: MediaQuery.of(context).size.height / 2,
+                          ringColor: Color.fromARGB(255, 74, 177, 77),
+                          ringGradient: null,
+                          fillColor: Color.fromARGB(255, 167, 208, 212)!,
+                          fillGradient: null,
+                          backgroundColor: const Color.fromARGB(255, 5, 0, 6),
+                          backgroundGradient: null,
+                          strokeWidth: 8.0,
+                          strokeCap: StrokeCap.round,
+                          textStyle: TextStyle(
+                              fontSize: 25.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                          textFormat: CountdownTextFormat.S,
+                          isReverse: true,
+                          isReverseAnimation: true,
+                          isTimerTextShown: true,
+                          autoStart: true,
+                          onComplete: () {
+                            selectedOption = null;
+                            if (currentQuest < lastQuest - 1) {
+                              _isAnswered = true;
 
-                                setState(() {});
-                                _timecontroller.restart(duration: 30);
-                              } else {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ResultScreen(
-                                        rightAnswerCount: rightAnswerCount,
-                                      ),
-                                    ));
-                              }
-                            },
-                            timeFormatterFunction:
-                                (defaultFormatterFunction, duration) {
-                              if (duration.inSeconds == 0) {
-                                return "0";
-                              } else {
-                                return Function.apply(
-                                    defaultFormatterFunction, [duration]);
-                              }
-                            },
-                          ),
+                              setState(() {});
+                            }
+                          },
+                          timeFormatterFunction:
+                              (defaultFormatterFunction, duration) {
+                            if (duration.inSeconds == 30) {
+                              return "0";
+                            } else {
+                              return Function.apply(
+                                  defaultFormatterFunction, [duration]);
+                            }
+                          },
                         ),
                       ),
                     )
@@ -205,7 +188,7 @@ class _SportsQuizState extends State<SportsQuiz> {
               SizedBox(
                 height: 20,
               ),
-              if (selectedOption != null)
+              if (_isAnswered || selectedOption != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: InkWell(
@@ -216,6 +199,7 @@ class _SportsQuizState extends State<SportsQuiz> {
                         questIndex++;
                         currentIndex++;
                         _isAnswered = false;
+                        _timecontroller.restart(duration: 30);
                         _updatePercentage();
                       } else {
                         Navigator.pushReplacement(
