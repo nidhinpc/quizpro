@@ -1,3 +1,4 @@
+import 'package:quizpro/utils/image_constants.dart';
 import 'package:quizpro/view/biologyQuiz/biology_quiz.dart';
 import 'package:quizpro/view/chemistryQuiz/chemistry_quiz.dart';
 import 'package:quizpro/view/mathQuiz/math_quiz.dart';
@@ -7,12 +8,36 @@ import 'package:quizpro/view/sportsQuiz/sports_quiz.dart';
 
 class Dummydb {
   static List sectionList = [
-    {"SectionName": "SPORTS", "Navigation": SportsQuiz()},
-    {"SectionName": "MATHS", "Navigation": MathQuiz()},
-    {"SectionName": "BIOLOGY", "Navigation": BiologyQuiz()},
-    {"SectionName": "MOVIE", "Navigation": MovieQuiz()},
-    {"SectionName": "CHEMISTRY", "Navigation": ChemistryQuiz()},
-    {"SectionName": "SOCIAL", "Navigation": SocialQuiz()},
+    {
+      "SectionName": "SPORTS",
+      "Navigation": SportsQuiz(),
+      "Cover": ImageConstants.sportsImage,
+    },
+    {
+      "SectionName": "MATHS",
+      "Navigation": MathQuiz(),
+      "Cover": ImageConstants.mathImage,
+    },
+    {
+      "SectionName": "BIOLOGY",
+      "Navigation": BiologyQuiz(),
+      "Cover": ImageConstants.biologyImage,
+    },
+    {
+      "SectionName": "MOVIE",
+      "Navigation": MovieQuiz(),
+      "Cover": ImageConstants.movieImage,
+    },
+    {
+      "SectionName": "CHEMISTRY",
+      "Navigation": ChemistryQuiz(),
+      "Cover": ImageConstants.chemImage,
+    },
+    {
+      "SectionName": "SOCIAL",
+      "Navigation": SocialQuiz(),
+      "Cover": ImageConstants.socialImage,
+    },
   ];
   static List<Map<String, dynamic>> sportsQuestionList = [
     {

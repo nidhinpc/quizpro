@@ -88,6 +88,7 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return CustomBox(
                     section: Dummydb.sectionList[index]["SectionName"],
+                    Coverimage: Dummydb.sectionList[index]["Cover"],
                     onCardTaped: () {
                       Navigator.pushReplacement(
                         context,

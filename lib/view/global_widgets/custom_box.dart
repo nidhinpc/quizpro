@@ -1,11 +1,18 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_rounded_progress_bar/rounded_progress_bar_style.dart';
 import 'package:quizpro/utils/color_constants.dart';
 
 class CustomBox extends StatelessWidget {
   String section;
   void Function()? onCardTaped;
+  dynamic Coverimage;
   CustomBox({
     required this.section,
+    required this.Coverimage,
     this.onCardTaped,
     super.key,
   });
@@ -18,10 +25,8 @@ class CustomBox extends StatelessWidget {
         height: 300,
         width: 200,
         decoration: BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                  "https://images.unsplash.com/photo-1647613049527-851295e24918?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")),
+          image:
+              DecorationImage(fit: BoxFit.cover, image: AssetImage(Coverimage)),
           borderRadius: BorderRadius.circular(20),
           color: ColorConstants.BoxColor,
         ),
@@ -33,9 +38,10 @@ class CustomBox extends StatelessWidget {
                 child: Text(
                   section,
                   style: TextStyle(
-                    color: Color.fromARGB(255, 47, 2, 252),
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
+                    backgroundColor: Color.fromARGB(179, 0, 0, 0),
+                    color: ColorConstants.TextColor,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
