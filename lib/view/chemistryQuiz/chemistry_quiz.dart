@@ -123,13 +123,9 @@ class _ChemistryQuizState extends State<ChemistryQuiz> {
                             onComplete: () {
                               selectedOption = null;
                               if (currentQuest < lastQuest - 1) {
-                                currentQuest++;
-                                questIndex++;
-                                currentIndex++;
                                 _isAnswered = true;
 
                                 setState(() {});
-                                _timecontroller.restart(duration: 30);
                               } else {
                                 Navigator.pushReplacement(
                                     context,
@@ -208,7 +204,7 @@ class _ChemistryQuizState extends State<ChemistryQuiz> {
               SizedBox(
                 height: 20,
               ),
-              if (selectedOption != null)
+              if (_isAnswered || selectedOption != null)
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: InkWell(
@@ -219,6 +215,7 @@ class _ChemistryQuizState extends State<ChemistryQuiz> {
                         questIndex++;
                         currentIndex++;
                         _isAnswered = false;
+                        _timecontroller.restart(duration: 30);
                         _updatePercentage();
                       } else {
                         Navigator.pushReplacement(

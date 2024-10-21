@@ -18,6 +18,10 @@ class CustomBox extends StatelessWidget {
         height: 300,
         width: 200,
         decoration: BoxDecoration(
+          image: DecorationImage(
+              fit: BoxFit.cover,
+              image: NetworkImage(
+                  "https://images.unsplash.com/photo-1647613049527-851295e24918?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")),
           borderRadius: BorderRadius.circular(20),
           color: ColorConstants.BoxColor,
         ),
@@ -29,8 +33,10 @@ class CustomBox extends StatelessWidget {
                 child: Text(
                   section,
                   style: TextStyle(
-                    color: ColorConstants.StarColor,
-                    fontSize: 24,
+                    color: Color.fromARGB(255, 47, 2, 252),
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
                   ),
                 ),
               )

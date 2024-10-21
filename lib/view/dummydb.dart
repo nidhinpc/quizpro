@@ -7,12 +7,12 @@ import 'package:quizpro/view/sportsQuiz/sports_quiz.dart';
 
 class Dummydb {
   static List sectionList = [
-    {"SectionName": "Sports", "Navigation": SportsQuiz()},
-    {"SectionName": "Maths", "Navigation": MathQuiz()},
-    {"SectionName": "Biology", "Navigation": BiologyQuiz()},
-    {"SectionName": "Movie", "Navigation": MovieQuiz()},
-    {"SectionName": "Chemistry", "Navigation": ChemistryQuiz()},
-    {"SectionName": "Social", "Navigation": SocialQuiz()},
+    {"SectionName": "SPORTS", "Navigation": SportsQuiz()},
+    {"SectionName": "MATHS", "Navigation": MathQuiz()},
+    {"SectionName": "BIOLOGY", "Navigation": BiologyQuiz()},
+    {"SectionName": "MOVIE", "Navigation": MovieQuiz()},
+    {"SectionName": "CHEMISTRY", "Navigation": ChemistryQuiz()},
+    {"SectionName": "SOCIAL", "Navigation": SocialQuiz()},
   ];
   static List<Map<String, dynamic>> sportsQuestionList = [
     {
