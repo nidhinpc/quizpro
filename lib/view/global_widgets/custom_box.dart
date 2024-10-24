@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_rounded_progress_bar/rounded_progress_bar_style.dart';
+
 import 'package:quizpro/utils/color_constants.dart';
 
 class CustomBox extends StatelessWidget {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizpro/utils/color_constants.dart';
+import 'package:quizpro/view/builder_screen/builder_screen.dart';
 import 'package:quizpro/view/dummydb.dart';
 import 'package:quizpro/view/global_widgets/custom_box.dart';
 
@@ -87,14 +88,15 @@ class HomeScreen extends StatelessWidget {
                     childAspectRatio: 1 / 1.15),
                 itemBuilder: (context, index) {
                   return CustomBox(
-                    section: Dummydb.sectionList[index]["SectionName"],
+                    section: Dummydball.quizList[index]["Categorry"],
                     Coverimage: Dummydb.sectionList[index]["Cover"],
                     onCardTaped: () {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              Dummydb.sectionList[index]["Navigation"],
+                          builder: (context) => BuilderScreen(
+                            datIndex: Dummydball.quizList[index]["dataIndex"],
+                          ),
                         ),
                       );
                     },
