@@ -23,7 +23,7 @@ class _BuilderScreenState extends State<BuilderScreen> {
   int currentIndex = 0;
   int questIndex = 0;
   int currentQuest = 1;
-  int lastQuest = Dummydb.sportsQuestionList.length;
+  late int lastQuest = Dummydball.quizList[sectionIndex]["Section"].length;
   int? selectedOption;
   int rightAnswerCount = 0;
   late int sectionIndex;
@@ -99,7 +99,8 @@ class _BuilderScreenState extends State<BuilderScreen> {
                       ),
                     ),
                     if (selectedOption ==
-                        Dummydb.sportsQuestionList[currentIndex]["answerIndex"])
+                        Dummydball.quizList[sectionIndex]["Section"]
+                            [currentIndex]["answerIndex"])
                       Lottie.asset(
                         AnimationConstants.rightAnswerAnimation,
                       ),
@@ -228,6 +229,7 @@ class _BuilderScreenState extends State<BuilderScreen> {
                             MaterialPageRoute(
                               builder: (context) => ResultScreen(
                                 rightAnswerCount: rightAnswerCount,
+                                section: sectionIndex,
                               ),
                             ));
                       }

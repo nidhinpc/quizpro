@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quizpro/utils/color_constants.dart';
+import 'package:quizpro/view/builder_screen/builder_screen.dart';
 import 'package:quizpro/view/dummydb.dart';
 import 'package:quizpro/view/home_screen/home_screen.dart';
-import 'package:quizpro/view/sportsQuiz/sports_quiz.dart';
 
 class ResultScreen extends StatefulWidget {
-  const ResultScreen({super.key, required this.rightAnswerCount});
-
+  const ResultScreen(
+      {super.key, required this.rightAnswerCount, required this.section});
+  final int section;
   final int rightAnswerCount;
 
   @override
@@ -16,10 +17,12 @@ class ResultScreen extends StatefulWidget {
 class _ResultScreenState extends State<ResultScreen> {
   int starCount = 0;
   late int yourScore;
+  late int sectionIndex = widget.section;
 
   calculateStarccount() {
-    var percentage =
-        widget.rightAnswerCount / Dummydb.sportsQuestionList.length * 100;
+    var percentage = widget.rightAnswerCount /
+        Dummydball.quizList[sectionIndex]["Section"].length *
+        100;
     if (percentage >= 80) {
       starCount = 3;
     } else if (percentage >= 50) {
@@ -81,7 +84,7 @@ class _ResultScreenState extends State<ResultScreen> {
                 style: TextStyle(color: ColorConstants.TextColor, fontSize: 24),
               ),
               Text(
-                "$yourScore/${Dummydb.sportsQuestionList.length - 1}",
+                "$yourScore/${Dummydball.quizList[sectionIndex]["Section"].length - 1}",
                 style: TextStyle(color: ColorConstants.StarColor, fontSize: 22),
               ),
               SizedBox(
@@ -92,7 +95,10 @@ class _ResultScreenState extends State<ResultScreen> {
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SportsQuiz(),
+                      builder: (context) => BuilderScreen(
+                        datIndex: Dummydball.quizList[sectionIndex]
+                            ["dataIndex"],
+                      ),
                     ),
                     (route) => false,
                   );

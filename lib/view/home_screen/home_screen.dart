@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return CustomBox(
                     section: Dummydball.quizList[index]["Categorry"],
-                    Coverimage: Dummydb.sectionList[index]["Cover"],
+                    Coverimage: Dummydball.quizList[index]["Cover"],
                     onCardTaped: () {
                       Navigator.push(
                         context,
@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   );
                 },
-                itemCount: Dummydb.sectionList.length,
+                itemCount: Dummydball.quizList.length,
               ),
             )
           ],
